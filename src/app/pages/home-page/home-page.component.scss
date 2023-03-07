@@ -20,8 +20,6 @@ section.container {
       box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
       color: white;
       font-weight: 300;
-      animation-duration: 3s;
-      animation-name: slidein;
 
       &:hover {
         text-decoration: underline;
@@ -36,39 +34,21 @@ section.container {
     }
     img {
       height: 200px;
+      aspect-ratio: 1;
+      filter: grayscale(1);
     }
     .card-image {
       border-radius: 15px;
     }
-    .left-one,
-    .left-two {
-      box-shadow: -10px 1px 10px rgb(0, 0, 0);
-      position: absolute;
-      transition: all 300ms ease-in-out;
-    }
-    .left-one {
-      left: calc(-10rem - 100px);
-      z-index: 2;
-    }
-    .left-two {
+    .first-card {
       left: calc(-20rem - 100px);
       z-index: 1;
     }
-    .right-one,
-    .right-two {
-      box-shadow: 10px 1px 10px rgb(0, 0, 0);
-      position: absolute;
-      transition: all 300ms ease-in-out;
-    }
-    .right-one {
-      left: calc(10rem - 100px);
+    .second-card {
+      left: calc(-10rem - 100px);
       z-index: 2;
     }
-    .right-two {
-      left: calc(20rem - 100px);
-      z-index: 1;
-    }
-    .mri-top-stack {
+    .top-card {
       position: absolute;
       top: 0;
       left: -100px;
@@ -76,22 +56,27 @@ section.container {
       box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
       transition: all 300ms ease-in-out;
       transform: scale(1.1);
-      border: 1px solid red;
-      &:hover {
-        transform: scale(0.9);
-      }
     }
-  }
-}
+    .third-card {
+      left: calc(10rem - 100px);
+      z-index: 2;
+    }
+    .fourth-card {
+      left: calc(20rem - 100px);
+      z-index: 1;
+    }
 
-@keyframes slidein {
-  from {
-    margin-left: 100%;
-    width: 300%;
-  }
-
-  to {
-    margin-left: 0%;
-    width: 100%;
+    .first-card,
+    .second-card {
+      box-shadow: -10px 1px 10px rgb(0, 0, 0);
+      position: absolute;
+      transition: all 300ms ease-in-out;
+    }
+    .third-card,
+    .fourth-card {
+      box-shadow: 10px 1px 10px rgb(0, 0, 0);
+      position: absolute;
+      transition: all 300ms ease-in-out;
+    }
   }
 }
