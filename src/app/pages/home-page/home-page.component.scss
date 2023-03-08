@@ -1,5 +1,7 @@
+// #F9F1AB
 section.container {
   margin: 3rem auto 0 auto;
+  padding-bottom: 30rem;
   width: 80%;
 
   main {
@@ -10,6 +12,14 @@ section.container {
 
     h1 {
       margin-bottom: 3rem;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
 
     label.upload-image-btn {
@@ -26,13 +36,17 @@ section.container {
         padding: 1.1rem 4.1rem;
       }
     }
+    p {
+      margin-top: 2rem;
+      overflow: hidden;
+    }
     .stack-images {
       position: relative;
       margin: 5rem auto 0 auto;
       min-height: 300px;
       transition: all 300ms ease-in-out;
     }
-    img {
+    img.big-card {
       height: 200px;
       aspect-ratio: 1;
       filter: grayscale(1);
@@ -78,5 +92,55 @@ section.container {
       position: absolute;
       transition: all 300ms ease-in-out;
     }
+    .small-card {
+      -webkit-animation: shrink-cards 0.5s forwards; /* for less modern browsers */
+      animation: shrink-cards 0.5s forwards;
+    }
+    .progress-circles {
+      position: relative;
+      width: 100%;
+      min-height: 340px;
+    }
+    .circle-green {
+      width: 300px;
+      height: 150px;
+      // border-radius: 50%;
+      border: 20px solid #c1f4c0;
+      position: absolute;
+      top: 0;
+      left: calc(45% - 110px);
+
+      border-top-left-radius: 320px; /* 100px of height + 10px of border */
+      border-top-right-radius: 320px; /* 100px of height + 10px of border */
+
+      border-bottom: 0;
+    }
+    .circle-yellow {
+      border: 20px solid #f9f1ab;
+      width: 300px;
+      height: 150px;
+      // border-radius: 50%;
+      position: absolute;
+      top: 170px;
+      left: calc(45% - 110px);
+
+      border-bottom-left-radius: 320px; /* 100px of height + 10px of border */
+      border-bottom-right-radius: 320px; /* 100px of height + 10px of border */
+
+      border-top: 0;
+    }
+  }
+}
+@keyframes shrink-cards {
+  from {
+    height: 200px;
+    aspect-ratio: 1;
+  }
+  to {
+    display: none;
+    left: 0;
+    top: 0;
+    height: 0;
+    aspect-ratio: 1;
   }
 }

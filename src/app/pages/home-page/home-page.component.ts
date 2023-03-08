@@ -12,6 +12,10 @@ export class HomePageComponent implements AfterViewInit {
   @ViewChild('thirdCard') third_card: any;
   @ViewChild('fourthCard') fourth_card: any;
 
+  @ViewChild('imageInput') imageInput: any;
+
+  imageUploaded: File | null = null;
+
   async ngAfterViewInit(): Promise<void> {
     const cards: any[] = [
       this.first_card,
@@ -20,11 +24,41 @@ export class HomePageComponent implements AfterViewInit {
       this.third_card,
       this.fourth_card,
     ];
+
+    this.imageInput.nativeElement.addEventListener('change', () => {
+      this.imageUploaded = this.imageInput.nativeElement.files[0];
+    });
+
     while (true) {
-      await new Promise((r) => setTimeout(r, 2000));
-      rotateCards(cards);
+      if (!this.imageUploaded) {
+        await new Promise((r) => setTimeout(r, 1000));
+        rotateCards(cards);
+      } else {
+        for (let i = 1000; i > 200; i -= 100) {
+          await new Promise((r) => setTimeout(r, i));
+          rotateCards(cards);
+        }
+
+        for (let i = 0; i < 25; i++) {
+          await new Promise((r) => setTimeout(r, 150));
+          rotateCards(cards);
+        }
+        shrinkCards(cards);
+        for (let i = 0; i < 25; i++) {
+          await new Promise((r) => setTimeout(r, 150));
+          rotateCards(cards);
+        }
+        break;
+      }
     }
   }
+}
+
+function shrinkCards(cards: any[]) {
+  cards.forEach((card: any) => {
+    card.nativeElement.classList.remove('big-card');
+    card.nativeElement.classList.add('small-card');
+  });
 }
 
 function rotateCards(cards: any[]) {
@@ -35,9 +69,9 @@ function rotateCards(cards: any[]) {
     3: 'third-card',
     4: 'fourth-card',
   };
-  // const cards = Array.from(document.querySelectorAll('.card-image'));
-  cards = cards.map((card) => card.nativeElement);
+
   cards.forEach((card: any) => {
+    card = card.nativeElement;
     let i = Number.parseInt(card.dataset.position);
 
     if (i >= 4) {
@@ -45,8 +79,14 @@ function rotateCards(cards: any[]) {
     } else {
       i++;
     }
-
-    card.classList = ['card-image'];
+    if (card.classList.contains('small-card')) {
+      card.classList = ['card-image'];
+      card.classList.add('small-card');
+    } else {
+      console.log('Big card added somehow');
+      card.classList = ['card-image'];
+      card.classList.add('big-card');
+    }
     card.classList.add(classes[i]);
 
     card.dataset.position = i;

@@ -2,8 +2,18 @@
   <main>
     <h1>Upload a picture to get a prediction!</h1>
     <form action="/">
-      <input type="file" name="image" id="image" style="display: none" />
+      <input
+        #imageInput
+        type="file"
+        name="image"
+        accept="image/*"
+        id="image"
+        style="display: none"
+      />
       <label for="image" class="upload-image-btn">Upload</label>
+      <p *ngIf="this.imageUploaded">
+        File: <b>{{ this.imageUploaded.name }}</b>
+      </p>
     </form>
     <div class="stack-images">
       <!-- 2, 1, 0, 1, 2 -->
@@ -12,37 +22,41 @@
         #firstCard
         src="/assets/mri.jpg"
         alt="MRI image"
-        class="first-card card-image"
+        class="first-card card-image big-card"
         data-position="0"
       />
       <img
         #secondCard
         src="/assets/mri2.jpg"
         alt="MRI image"
-        class="second-card card-image"
+        class="second-card card-image big-card"
         data-position="1"
       />
       <img
         #topCard
         src="/assets/mri3.png"
         alt="MRI image"
-        class="top-card card-image"
+        class="top-card card-image big-card"
         data-position="2"
       />
       <img
         #thirdCard
         src="/assets/mri4.jpg"
         alt="MRI image"
-        class="third-card card-image"
+        class="third-card card-image big-card"
         data-position="3"
       />
       <img
         #fourthCard
         src="/assets/mri5.jpg"
         alt="MRI image"
-        class="fourth-card card-image"
+        class="fourth-card card-image big-card"
         data-position="4"
       />
+    </div>
+    <div class="progress-circles">
+      <div class="circle-green"></div>
+      <div class="circle-yellow"></div>
     </div>
   </main>
 </section>
