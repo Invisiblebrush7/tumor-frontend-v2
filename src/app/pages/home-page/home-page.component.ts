@@ -16,6 +16,8 @@ export class HomePageComponent implements AfterViewInit {
 
   imageUploaded: File | null = null;
 
+  animationFinished: boolean = false;
+
   async ngAfterViewInit(): Promise<void> {
     const cards: any[] = [
       this.first_card,
@@ -34,6 +36,7 @@ export class HomePageComponent implements AfterViewInit {
         await new Promise((r) => setTimeout(r, 1000));
         rotateCards(cards);
       } else {
+        // TODO: This should be changed when the API returns the prediction
         for (let i = 1000; i > 200; i -= 100) {
           await new Promise((r) => setTimeout(r, i));
           rotateCards(cards);
@@ -46,8 +49,11 @@ export class HomePageComponent implements AfterViewInit {
         shrinkCards(cards);
         for (let i = 0; i < 25; i++) {
           await new Promise((r) => setTimeout(r, 150));
-          rotateCards(cards);
+          if (i == 3) {
+            this.animationFinished = true;
+          }
         }
+
         break;
       }
     }
