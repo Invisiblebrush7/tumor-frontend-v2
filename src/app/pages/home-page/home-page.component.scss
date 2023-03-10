@@ -142,6 +142,16 @@
     gap: 1rem;
     margin-top: 4rem;
     padding-bottom: 3rem;
+    button.try-it-out-btn {
+      margin-top: 3rem;
+      padding: 1rem 1rem;
+      width: 138px;
+      background-color: #d5985a;
+      font-size: 18px;
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
     h2 {
       font-weight: 400;
       font-size: 2rem;
@@ -228,5 +238,42 @@
         }
       }
     }
+  }
+  .try-it-now {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+    h2 {
+      font-weight: 400;
+      font-size: 2rem;
+    }
+    h4 {
+      font-weight: 300;
+      text-align: center;
+      font-size: 1.25rem;
+    }
+    button.try-it-out-btn {
+      margin-top: 3rem;
+      padding: 1rem 1rem;
+      width: 138px;
+      background-color: #d5985a;
+      font-size: 18px;
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+  }
+  footer {
+    background-color: #272727;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 40px;
   }
 }
