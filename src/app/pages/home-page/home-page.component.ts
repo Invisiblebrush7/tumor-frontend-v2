@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { IconDefinition, faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  faDatabase,
+  faComputer,
+  faCloudArrowUp,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home-page',
@@ -7,5 +12,8 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-  faGithub = faGithub;
+  faGithub: IconDefinition = faGithub;
+  faDatabase: IconDefinition = faDatabase;
+  faComputer: IconDefinition = faComputer;
+  faCloudArrowUp: IconDefinition = faCloudArrowUp;
 }
