@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -18,7 +19,9 @@ export class PredictPageComponent implements AfterViewInit {
   imageUploaded: File | null = null;
   animationFinished: boolean = false;
 
-  prediction: string | null = null;
+  uploadedImage: File | null = null;
+
+  prediction: string = '';
 
   constructor(private apiService: ApiServiceService) {}
 
@@ -31,10 +34,19 @@ export class PredictPageComponent implements AfterViewInit {
       this.fourth_card,
     ];
 
-    this.imageInput.nativeElement.addEventListener('change', () => {
-      this.imageUploaded = this.imageInput.nativeElement.files[0];
-      this.apiService.postImage(this.imageUploaded!).subscribe((res: any) => {
-        this.prediction = res;
+    this.imageInput.nativeElement.addEventListener('change', (e: any) => {
+      const image: File = e.target.files[0];
+
+      this.imageUploaded = image;
+
+      this.apiService.postImage(image).subscribe((res: any) => {
+        if (res.status === 200 && res.body.prediction) {
+          this.prediction = res.body.prediction;
+        } else if (res.status === 200) {
+          this.prediction = 'No prediction';
+        } else {
+          this.prediction = 'Something went wrong!';
+        }
       });
     });
 

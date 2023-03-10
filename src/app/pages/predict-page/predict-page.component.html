@@ -1,5 +1,5 @@
 <mat-toolbar class="navbar">
-  <p>Tumor Classification</p>
+  <p routerLink="/">Tumor Classification</p>
 </mat-toolbar>
 
 <section class="container">
@@ -15,14 +15,14 @@
         style="display: none"
       />
       <label for="image" class="upload-image-btn">Upload</label>
-      <p *ngIf="this.imageUploaded">
+      <p *ngIf="this.imageUploaded && !this.prediction">
         <b>Predicting your results...</b>
       </p>
-      <p *ngIf="this.prediction">Prediction:{{ this.prediction }}</p>
+      <p *ngIf="this.prediction">
+        <b>{{ this.prediction }}</b>
+      </p>
     </form>
     <div class="stack-images gradient-border">
-      <!-- 2, 1, 0, 1, 2 -->
-
       <img
         #firstCard
         src="/assets/mri.jpg"

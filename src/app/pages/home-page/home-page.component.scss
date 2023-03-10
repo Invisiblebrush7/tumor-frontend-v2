@@ -16,6 +16,12 @@
       rgba(84, 84, 84, 0.75) 50%,
       rgba(48, 48, 48, 0.2) 75%
     );
+    a {
+      color: white;
+      &:hover {
+        color: white;
+      }
+    }
     position: relative;
     margin-top: 0;
     fa-icon {

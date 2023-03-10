@@ -9,6 +9,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PredictPageComponent } from './pages/predict-page/predict-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomePageComponent, PredictPageComponent],
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FontAwesomeModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
