@@ -12,7 +12,9 @@
         Harnessing AI to Detect Tumors in <br />
         MRI Images
       </h3>
-      <button class="try-it-out-btn" mat-raised-button>Try now</button>
+      <button [routerLink]="'predict'" class="try-it-out-btn" mat-raised-button>
+        Try now
+      </button>
     </div>
   </div>
 
@@ -54,7 +56,13 @@
           <li>Has 7,000,000+ trainable parameters</li>
           <li>Took 7+ hours to fully train</li>
           <li><b>Is cool</b></li>
-          <button class="try-it-out-btn" mat-raised-button>Try now</button>
+          <button
+            [routerLink]="'predict'"
+            class="try-it-out-btn"
+            mat-raised-button
+          >
+            Try now
+          </button>
         </ol>
       </div>
     </div>
@@ -115,7 +123,9 @@
       Upload an MRI scan and find out which <br />
       kind of tumor is!
     </h4>
-    <button class="try-it-out-btn" mat-raised-button>Try now</button>
+    <button [routerLink]="'predict'" class="try-it-out-btn" mat-raised-button>
+      Try now
+    </button>
   </section>
   <footer>
     <h3>Tumor Classification</h3>
