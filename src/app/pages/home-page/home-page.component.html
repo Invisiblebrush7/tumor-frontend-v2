@@ -1,73 +1,18 @@
-<section class="container">
-  <main>
-    <h1>Upload a picture to get a prediction!</h1>
-    <form action="/">
-      <input
-        #imageInput
-        type="file"
-        name="image"
-        accept="image/*"
-        id="image"
-        style="display: none"
-      />
-      <label for="image" class="upload-image-btn">Upload</label>
-      <p *ngIf="this.imageUploaded">
-        <b>Predicting your results...</b>
-      </p>
-    </form>
-    <div class="stack-images gradient-border">
-      <!-- 2, 1, 0, 1, 2 -->
-
-      <img
-        #firstCard
-        src="/assets/mri.jpg"
-        alt="MRI image"
-        class="first-card card-image big-card"
-        data-position="0"
-      />
-      <img
-        #secondCard
-        src="/assets/mri2.jpg"
-        alt="MRI image"
-        class="second-card card-image big-card"
-        data-position="1"
-      />
-      <img
-        #topCard
-        src="/assets/mri3.png"
-        alt="MRI image"
-        class="top-card card-image big-card"
-        data-position="2"
-      />
-      <img
-        #thirdCard
-        src="/assets/mri4.jpg"
-        alt="MRI image"
-        class="third-card card-image big-card"
-        data-position="3"
-      />
-      <img
-        #fourthCard
-        src="/assets/mri5.jpg"
-        alt="MRI image"
-        class="fourth-card card-image big-card"
-        data-position="4"
-      />
-      <div
-        [ngClass]="
-          this.animationFinished
-            ? 'content-description'
-            : 'content-description-none-displayed'
-        "
-      >
-        <h2>Meningioma Tumor</h2>
-        <p>
-          A meningioma is a tumor that arises from the meninges — the membranes
-          that surround the brain and spinal cord. Although not technically a
-          brain tumor, it is included in this category because it may compress
-          or squeeze the adjacent brain, nerves and vessels.
-        </p>
-      </div>
+<div class="blank-page">
+  <nav class="navbar">
+    <h3>Tumor Classification</h3>
+    <fa-icon [icon]="faGithub"></fa-icon>
+  </nav>
+  <div class="hero-image">
+    <img src="/assets/ambulance.jpg" alt="hero-image" />
+    <div class="black-filter"></div>
+    <div class="text-content">
+      <h1>Deep Diagnostics</h1>
+      <h3>
+        Harnessing AI to Detect Tumors in <br />
+        MRI Images
+      </h3>
+      <button class="try-it-out-btn" mat-raised-button>Try now</button>
     </div>
-  </main>
-</section>
+  </div>
+</div>
