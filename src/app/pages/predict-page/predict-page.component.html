@@ -18,6 +18,7 @@
       <p *ngIf="this.imageUploaded">
         <b>Predicting your results...</b>
       </p>
+      <p *ngIf="this.prediction">Prediction:{{ this.prediction }}</p>
     </form>
     <div class="stack-images gradient-border">
       <!-- 2, 1, 0, 1, 2 -->

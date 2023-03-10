@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-predict-page',
@@ -15,8 +16,11 @@ export class PredictPageComponent implements AfterViewInit {
   @ViewChild('imageInput') imageInput: any;
 
   imageUploaded: File | null = null;
-
   animationFinished: boolean = false;
+
+  prediction: string | null = null;
+
+  constructor(private apiService: ApiServiceService) {}
 
   async ngAfterViewInit(): Promise<void> {
     const cards: any[] = [
@@ -29,6 +33,9 @@ export class PredictPageComponent implements AfterViewInit {
 
     this.imageInput.nativeElement.addEventListener('change', () => {
       this.imageUploaded = this.imageInput.nativeElement.files[0];
+      this.apiService.postImage(this.imageUploaded!).subscribe((res: any) => {
+        this.prediction = res;
+      });
     });
 
     while (true) {
@@ -89,7 +96,6 @@ function rotateCards(cards: any[]) {
       card.classList = ['card-image'];
       card.classList.add('small-card');
     } else {
-      console.log('Big card added somehow');
       card.classList = ['card-image'];
       card.classList.add('big-card');
     }
