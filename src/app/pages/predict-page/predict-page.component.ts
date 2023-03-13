@@ -25,6 +25,12 @@ export class PredictPageComponent implements AfterViewInit {
 
   constructor(private apiService: ApiServiceService) {}
 
+  testApi(_: any) {
+    this.apiService.testApi().subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
   async ngAfterViewInit(): Promise<void> {
     const cards: any[] = [
       this.first_card,
@@ -43,6 +49,7 @@ export class PredictPageComponent implements AfterViewInit {
         if (res.status === 200 && res.body.prediction) {
           this.prediction = res.body.prediction;
         } else if (res.status === 200) {
+          console.log(res);
           this.prediction = 'No prediction';
         } else {
           this.prediction = 'Something went wrong!';
