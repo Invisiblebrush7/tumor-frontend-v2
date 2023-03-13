@@ -3,10 +3,6 @@
 </mat-toolbar>
 
 <section class="container">
-  <button (click)="testApi($event)" mat-raised-button color="primary">
-    Test API
-  </button>
-
   <main>
     <h1>Upload a picture to get a prediction!</h1>
     <form action="/">
@@ -21,9 +17,6 @@
       <label for="image" class="upload-image-btn">Upload</label>
       <p *ngIf="this.imageUploaded && !this.prediction">
         <b>Predicting your results...</b>
-      </p>
-      <p *ngIf="this.prediction">
-        <b>{{ this.prediction }}</b>
       </p>
     </form>
     <div class="stack-images gradient-border">
@@ -64,18 +57,13 @@
       />
       <div
         [ngClass]="
-          this.animationFinished
+          this.animationFinished && this.prediction
             ? 'content-description'
             : 'content-description-none-displayed'
         "
       >
-        <h2>Meningioma Tumor</h2>
-        <p>
-          A meningioma is a tumor that arises from the meninges — the membranes
-          that surround the brain and spinal cord. Although not technically a
-          brain tumor, it is included in this category because it may compress
-          or squeeze the adjacent brain, nerves and vessels.
-        </p>
+        <h2>{{ this.prediction | capitalize }}</h2>
+        <p>{{ this.description }}</p>
       </div>
     </div>
   </main>

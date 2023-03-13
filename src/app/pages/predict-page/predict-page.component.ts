@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -22,14 +21,27 @@ export class PredictPageComponent implements AfterViewInit {
   uploadedImage: File | null = null;
 
   prediction: string = '';
+  description: string = '';
+
+  private data: any = {
+    'glioma tumor': `Glioma is a growth of cells that starts in the brain or spinal cord.
+    The cells in a glioma look similar to healthy brain cells called glial
+    cells. Glial cells surround nerve cells and help them function. As a
+    glioma grows it forms a mass of cells called a tumor`,
+    'meningioma tumor': `A meningioma is a tumor that arises from the meninges — the membranes
+    that surround the brain and spinal cord. Although not technically a
+    brain tumor, it is included in this category because it may compress
+    or squeeze the adjacent brain, nerves and vessels.`,
+    'pituitary tumor': `Pituitary tumors are unusual growths that develop in the pituitary
+    gland. This gland is an organ about the size of a pea. It's located
+    behind the nose at the base of the brain. Some of these tumors cause
+    the pituitary gland to make too much of certain hormones that control
+    important body functions. Others can cause the pituitary gland to make
+    too little of those hormones.`,
+    'no tumor': `No tumor in this MRI!`,
+  };
 
   constructor(private apiService: ApiServiceService) {}
-
-  testApi(_: any) {
-    this.apiService.testApi().subscribe((res: any) => {
-      console.log(res);
-    });
-  }
 
   async ngAfterViewInit(): Promise<void> {
     const cards: any[] = [
@@ -48,11 +60,13 @@ export class PredictPageComponent implements AfterViewInit {
       this.apiService.postImage(image).subscribe((res: any) => {
         if (res.status === 200 && res.body.prediction) {
           this.prediction = res.body.prediction;
+          this.description = this.data[this.prediction];
         } else if (res.status === 200) {
           console.log(res);
-          this.prediction = 'No prediction';
+          this.prediction = this.description = 'No prediction';
         } else {
           this.prediction = 'Something went wrong!';
+          this.description = ':(';
         }
       });
     });

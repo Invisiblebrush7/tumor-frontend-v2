@@ -6,9 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiServiceService {
-  // private apiUrl: string = 'http://localhost:4200/api';
   private apiUrl: string =
-    'https://tumorclassification-yfr2gcdqwa-ew.a.run.app/';
+    'https://tumorclassification-yfr2gcdqwa-ew.a.run.app';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -27,18 +26,11 @@ export class ApiServiceService {
       formData,
       { headers: headers }
     );
-    console.log('URL: ' + `${this.apiUrl}/upload_image`);
 
     return this.httpClient.request(req);
   }
-  // {'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'}
+
   testApi(): Observable<any> {
-    const headers = new HttpHeaders({
-      'User-Agent': 'python-requests/2.27.1',
-      'Accept-Encoding': 'gzip, deflate, br',
-      Accept: '*/*',
-      Connection: 'keep-alive',
-    });
     return this.httpClient.get(this.apiUrl);
   }
 }
