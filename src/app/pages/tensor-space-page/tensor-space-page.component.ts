@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+// const data = require("./data.json");
+// import data from '/assets/data.json';
 
 @Component({
   selector: 'app-tensor-space-page',
